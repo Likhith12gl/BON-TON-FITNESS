@@ -32,15 +32,13 @@ export default function Navbar() {
     >
       <div className="max-w-[1440px] mx-auto flex items-center justify-between px-6 md:px-12 py-4">
         <Link to="/" className="flex items-center gap-3" data-testid="nav-logo">
-          <div className="w-9 h-9 flex items-center justify-center rounded-full bg-neon text-black font-display text-lg">
-            B
-          </div>
-          <div className="leading-tight">
+          <img src="/logo.png" alt="Bon Ton Fitness" className="w-12 h-12 object-contain" />
+          <div className="leading-tight hidden sm:block">
             <div className="font-display text-lg tracking-widest uppercase">
               Bon Ton
             </div>
             <div className="font-mono-ui text-[10px] text-white/50 tracking-[0.3em]">
-              FITNESS · BLR
+              FITNESS
             </div>
           </div>
         </Link>
