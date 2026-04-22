@@ -4,13 +4,14 @@ import Navbar from "./components/Navbar";
 import SceneCanvas from "./components/SceneCanvas";
 import Hero from "./sections/Hero";
 import About from "./sections/About";
+import ClassesRail from "./sections/ClassesRail";
 import Membership from "./sections/Membership";
 import Branches from "./sections/Branches";
 import Testimonials from "./sections/Testimonials";
+import GalleryMarquee from "./sections/GalleryMarquee";
 import FinalCTA from "./sections/FinalCTA";
 
 export default function Home() {
-  // Scroll progress ref, shared with the R3F canvas.
   const scrollProgressRef = useRef(0);
 
   useEffect(() => {
@@ -46,9 +47,11 @@ export default function Home() {
       <main className="relative z-10">
         <Hero />
         <About />
+        <ClassesRail />
         <Membership />
         <Branches />
         <Testimonials />
+        <GalleryMarquee />
         <FinalCTA />
       </main>
     </div>

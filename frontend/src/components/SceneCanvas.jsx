@@ -13,20 +13,17 @@ function ScrollDrivenDumbbell({ scrollProgressRef }) {
   const group = useRef();
   const target = useRef({ x: 3.2, y: 0, z: 0, rx: 0.3, ry: -0.6, rz: 0.1, scale: 1.4 });
 
-  // Keyframes per section (approximate). 6 sections ~ each 1/6 of scroll.
-  // Hero: right-foreground.
-  // About/Features: center-left, slight up.
-  // Membership: drift right-deep, smaller/angled.
-  // Branches: top-left mini.
-  // Testimonials: center background, large and spinning.
-  // Final CTA: huge close-up on left.
+  // Keyframes spanning 8 sections (Hero, About, ClassesRail=heavier/longer, Membership, Branches, Testimonials, Gallery, FinalCTA)
   const keyframes = [
     { at: 0.0, x: 3.2, y: -0.2, z: 0, rx: 0.2, ry: -0.7, rz: 0.1, scale: 1.4 },
-    { at: 0.18, x: -2.0, y: 0.4, z: -1, rx: 0.1, ry: 0.5, rz: 0.0, scale: 1.2 },
-    { at: 0.36, x: 2.4, y: -0.8, z: -2, rx: -0.2, ry: 1.4, rz: -0.2, scale: 1.0 },
-    { at: 0.55, x: -3.5, y: 1.8, z: -3, rx: 0.4, ry: 2.2, rz: 0.2, scale: 0.7 },
-    { at: 0.75, x: 0, y: -0.2, z: -4, rx: 0.1, ry: 3.5, rz: 0.0, scale: 1.6 },
-    { at: 1.0, x: -3.0, y: 0, z: 1.2, rx: 0.3, ry: 4.8, rz: -0.1, scale: 2.2 },
+    { at: 0.12, x: -2.0, y: 0.4, z: -1, rx: 0.1, ry: 0.5, rz: 0.0, scale: 1.2 },
+    { at: 0.25, x: 3.2, y: 1.0, z: -2, rx: 0.25, ry: 1.4, rz: -0.15, scale: 0.9 },
+    { at: 0.38, x: -3.0, y: -1.2, z: -1.5, rx: -0.1, ry: 2.2, rz: 0.1, scale: 1.1 },
+    { at: 0.52, x: 2.4, y: -0.8, z: -2, rx: -0.2, ry: 3.0, rz: -0.2, scale: 1.0 },
+    { at: 0.66, x: -3.5, y: 1.8, z: -3, rx: 0.4, ry: 3.8, rz: 0.2, scale: 0.7 },
+    { at: 0.8, x: 0, y: -0.2, z: -4, rx: 0.1, ry: 4.8, rz: 0.0, scale: 1.6 },
+    { at: 0.92, x: 3.5, y: 1.2, z: -2, rx: 0.3, ry: 5.6, rz: -0.2, scale: 1.3 },
+    { at: 1.0, x: -3.0, y: 0, z: 1.2, rx: 0.3, ry: 6.4, rz: -0.1, scale: 2.2 },
   ];
 
   const lerp = (a, b, t) => a + (b - a) * t;
@@ -90,19 +87,19 @@ export default function SceneCanvas({ scrollProgressRef }) {
         gl={{ antialias: true, alpha: true }}
         camera={{ position: [0, 0, 7], fov: 38 }}
       >
-        <color attach="background" args={["#0a0a0a"]} />
-        <fog attach="fog" args={["#0a0a0a", 6, 22]} />
+        {/* transparent background so the page bg layers show through */}
 
         {/* Key lights */}
-        <ambientLight intensity={0.35} />
+        <ambientLight intensity={0.55} />
         <directionalLight
           position={[4, 5, 6]}
-          intensity={1.6}
+          intensity={2.2}
           color="#ffffff"
           castShadow
         />
-        <pointLight position={[-4, 2, 2]} intensity={2.2} color="#d6ff00" distance={12} />
-        <pointLight position={[5, -2, 3]} intensity={1.2} color="#7bf" distance={12} />
+        <pointLight position={[-4, 2, 2]} intensity={3.5} color="#d6ff00" distance={18} />
+        <pointLight position={[5, -2, 3]} intensity={1.6} color="#7bf" distance={16} />
+        <pointLight position={[0, 0, 6]} intensity={1.2} color="#ffffff" distance={10} />
 
         <Suspense fallback={null}>
           <Environment preset="city" />

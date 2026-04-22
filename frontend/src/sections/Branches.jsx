@@ -1,45 +1,6 @@
 import React from "react";
-import { MapPin, Clock } from "lucide-react";
-
-const BRANCHES = [
-  {
-    name: "Nagasandra",
-    tag: "Flagship · 8 years",
-    area: "Opp. Nagasandra Metro",
-    timings: "5:00 AM — 10:00 PM",
-    flagship: true,
-  },
-  {
-    name: "Byadarahalli",
-    tag: "Anjana Nagar",
-    area: "Near Anjana Nagar Bus Stop",
-    timings: "5:00 AM — 10:00 PM",
-  },
-  {
-    name: "Nelamangala",
-    tag: "Outer Ring",
-    area: "Main Rd, Nelamangala",
-    timings: "5:00 AM — 10:00 PM",
-  },
-  {
-    name: "Chikka Gollarahatti",
-    tag: "West Bangalore",
-    area: "Magadi Main Road",
-    timings: "5:00 AM — 10:00 PM",
-  },
-  {
-    name: "Laggere",
-    tag: "North-West",
-    area: "Laggere Main Road",
-    timings: "5:00 AM — 10:00 PM",
-  },
-  {
-    name: "Herohalli",
-    tag: "Sunkadakatte",
-    area: "Magadi Road, Herohalli",
-    timings: "5:00 AM — 10:00 PM",
-  },
-];
+import { MapPin, Phone, ExternalLink } from "lucide-react";
+import { BRANCHES } from "../data/brand";
 
 export default function Branches() {
   return (
@@ -58,16 +19,16 @@ export default function Branches() {
               className="mt-6 font-display text-5xl sm:text-6xl md:text-7xl lg:text-[104px] leading-[0.9] uppercase text-white"
               data-testid="branches-heading"
             >
-              Six floors.
+              Five floors.
               <br />
               One <span className="text-neon">Bangalore</span>.
             </h2>
           </div>
           <div className="col-span-12 lg:col-span-4 lg:pt-4">
             <p className="text-white/60 text-base leading-relaxed">
-              From our Nagasandra flagship to our west-city outposts — you&apos;re
-              never more than a ride away from a Bon Ton floor. Train across any
-              branch on our Premium &amp; Elite plans.
+              From our HMT Layout flagship to our west-city outposts — you&apos;re
+              never more than a ride away from a Bon Ton floor. Premium members
+              train across all five branches.
             </p>
           </div>
         </div>
@@ -86,7 +47,7 @@ export default function Branches() {
             >
               <div className="flex items-start justify-between">
                 <div className="font-mono-ui text-[10px] tracking-[0.3em] uppercase text-white/40">
-                  {String(i + 1).padStart(2, "0")} / 06
+                  {String(i + 1).padStart(2, "0")} / {String(BRANCHES.length).padStart(2, "0")}
                 </div>
                 {b.flagship && (
                   <div className="px-2 py-1 rounded-full bg-neon text-black font-mono-ui text-[9px] tracking-[0.25em] uppercase">
@@ -107,18 +68,22 @@ export default function Branches() {
                   <span>{b.area}</span>
                 </div>
                 <div className="flex items-start gap-3 text-white/70">
-                  <Clock className="w-4 h-4 mt-0.5 text-white/40" strokeWidth={1.8} />
-                  <span>{b.timings} · Sun mornings</span>
+                  <Phone className="w-4 h-4 mt-0.5 text-white/40" strokeWidth={1.8} />
+                  <a href={`tel:${b.phone}`} className="hover:text-neon">
+                    {b.phone}
+                  </a>
                 </div>
               </div>
 
               <div className="mt-8 flex items-center justify-between">
                 <a
-                  href="#transform"
-                  className="font-mono-ui text-[11px] tracking-[0.3em] uppercase text-white group-hover:text-neon transition-colors"
-                  data-testid={`branch-visit-${i}`}
+                  href={b.mapsUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 font-mono-ui text-[11px] tracking-[0.3em] uppercase text-white group-hover:text-neon transition-colors"
+                  data-testid={`branch-map-${i}`}
                 >
-                  Get Directions →
+                  Find on maps <ExternalLink className="w-3 h-3" />
                 </a>
                 <div className="w-2 h-2 rounded-full bg-neon pulse-dot" />
               </div>
