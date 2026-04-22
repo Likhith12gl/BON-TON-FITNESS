@@ -1,0 +1,144 @@
+{
+  "theme": "dark",
+  "archetype": "2 (Performance Pro)",
+  "colors": {
+    "background": "#0A0A0A",
+    "surface": "#121212",
+    "primary": "#D6FF00",
+    "text_primary": "#FFFFFF",
+    "text_secondary": "#A1A1AA",
+    "border": "rgba(255, 255, 255, 0.1)",
+    "glow": "rgba(214, 255, 0, 0.4)",
+    "glass_bg": "rgba(255, 255, 255, 0.05)"
+  },
+  "typography": {
+    "heading_font": "Anton, sans-serif",
+    "body_font": "Outfit, sans-serif",
+    "h1": "text-4xl sm:text-5xl lg:text-6xl uppercase tracking-tighter font-black",
+    "h2": "text-3xl sm:text-4xl lg:text-5xl uppercase tracking-tight font-black",
+    "h3": "text-xl sm:text-2xl font-bold uppercase",
+    "body": "text-base sm:text-lg text-gray-300 font-normal leading-relaxed"
+  },
+  "layout_strategy": {
+    "scroll": "Lenis for smooth continuous scrolling, no CSS scroll-snap.",
+    "sections": "4 primary sections min-h-screen (100vh) each + Branches + Testimonials.",
+    "container": "Max-width 1440px with generous p-6 md:p-12 lg:p-20.",
+    "glassmorphism": "backdrop-blur-2xl bg-white/5 border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)]",
+    "grid": "Grid children must be direct children. Avoid nesting grid wrappers unnecessarily."
+  },
+  "motion_and_3d": {
+    "canvas": "Fixed full-screen <Canvas> with pointer-events-none placed at a high z-index (e.g. z-40).",
+    "dumbbell_animation": "Use GSAP ScrollTrigger linked to a Three.js group reference. Rotate and position the dumbbell based on scroll progress: Hero (Right), About (Center), Membership (Background), Final CTA (Massive close-up).",
+    "lighting": "Use Three.js <Environment preset=\"city\" /> and directional lights with strong shadows to highlight metallic texture.",
+    "interactions": "Hover states on all buttons (scale up slightly, glow). Hovering feature cards lifts them (-translate-y-2) with a border color shift."
+  },
+  "sections": [
+    {
+      "id": "hero",
+      "name": "Hero Section",
+      "content": {
+        "heading": "BUILT DIFFERENT",
+        "subheading": "Be stronger than your excuses",
+        "cta": "Join Now"
+      },
+      "layout": "Left-aligned content block taking up 50% width on desktop. Right side empty to showcase the 3D dumbbell foreground.",
+      "visuals": "Dark blurred gym interior background with subtle neon ambient light overlay."
+    },
+    {
+      "id": "about",
+      "name": "About + Features",
+      "content": {
+        "heading": "We don't just build bodies, we build mentality",
+        "features": ["Strength Training", "Pro Equipment", "Nutrition Guidance", "Community"]
+      },
+      "layout": "2x2 grid for features using glassmorphism cards. Generous padding inside cards (p-8).",
+      "visuals": "Dumbbell object scrolls into center or left to intertwine with content."
+    },
+    {
+      "id": "membership",
+      "name": "Membership + Trust",
+      "content": {
+        "heading": "Choose Your Plan",
+        "statement": "YOUR ONLY LIMIT IS YOU",
+        "plans": [
+          { "name": "Basic", "price": "$30/mo" },
+          { "name": "Premium", "price": "$60/mo" },
+          { "name": "Elite", "price": "$100/mo" }
+        ],
+        "trust": "1400+ reviews, 4.9 rating"
+      },
+      "layout": "3-column grid for pricing cards. Premium card gets scale-105, #D6FF00 border, and neon glow drop-shadow. Trust metrics displayed below the cards.",
+      "visuals": "Gym floor texture background (dark metallic look)."
+    },
+    {
+      "id": "branches",
+      "name": "Branches",
+      "content": {
+        "heading": "6 Locations in Bangalore",
+        "locations": ["Nagasandra Flagship", "Byadarahalli / Anjana Nagar", "Nelamangala", "Chikka Gollarahatti", "Laggere", "Herohalli"]
+      },
+      "layout": "3-column responsive grid (md:grid-cols-2 lg:grid-cols-3) with tight gaps."
+    },
+    {
+      "id": "testimonials",
+      "name": "Testimonials",
+      "content": {
+        "heading": "Real Results"
+      },
+      "layout": "Shadcn Carousel showing user images and review texts."
+    },
+    {
+      "id": "final-cta",
+      "name": "Final CTA",
+      "content": {
+        "heading": "TRANSFORM YOUR BODY. TRANSFORM YOUR LIFE.",
+        "cta": "Join Now"
+      },
+      "layout": "Centered massive typography. Minimal footer at the bottom with social, contact, quick links."
+    }
+  ],
+  "media": {
+    "images": [
+      {
+        "url": "https://images.pexels.com/photos/29392546/pexels-photo-29392546.jpeg",
+        "category": "hero_background",
+        "description": "Dark atmospheric gym with neon lighting"
+      },
+      {
+        "url": "https://images.pexels.com/photos/29392549/pexels-photo-29392549.jpeg",
+        "category": "membership_background",
+        "description": "Industrial style gym interior floor texture"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1754475412029-3a4896a930c7",
+        "category": "testimonial_1",
+        "description": "Muscular man flexes biceps"
+      },
+      {
+        "url": "https://images.pexels.com/photos/11338008/pexels-photo-11338008.jpeg",
+        "category": "testimonial_2",
+        "description": "Strong muscular man dramatic lighting"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1754475096386-b7a2a45a91fb",
+        "category": "testimonial_3",
+        "description": "Muscular man posing"
+      }
+    ],
+    "3d_assets": [
+      {
+        "type": "model",
+        "description": "Realistic metallic dumbbell 3D model (GLTF/GLB). If unavailable, build procedurally in R3F using a Cylinder, two Spheres/Cylinders for weights, and apply a standardMeshMaterial with high metalness (0.9) and low roughness (0.2)."
+      }
+    ]
+  },
+  "instructions_to_main_agent": [
+    "Install missing dependencies: yarn add @react-three/fiber @react-three/drei gsap @studio-freight/react-lenis",
+    "Use pure HTML/Tailwind for structural layout. Use Shadcn only for complex logic components like the Carousel.",
+    "Implement fixed <Canvas> spanning the viewport (100vw, 100vh). Link GSAP ScrollTrigger to update 3D camera or dumbbell mesh rotation and position on scroll events.",
+    "Ensure dark overlay on background images: bg-black/60 so text remains highly visible.",
+    "All interactive elements MUST include a 'data-testid' attribute (e.g., data-testid='join-now-button', data-testid='plan-card').",
+    "Apply 'text-[#D6FF00]' specifically to highlight keywords in headings or active UI states.",
+    "Maintain strict maximum header size at text-6xl for large viewports. Use tracking-tighter to tighten up Anton font."
+  ]
+}
